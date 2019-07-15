@@ -1,10 +1,8 @@
 package com.example.desafio;
 
 //import java.io.File;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
-public class Tarefa {
+public class TarefaDTO {
 	//atributos da tarefa
 	private boolean concluido = false;
 	private String nome;
