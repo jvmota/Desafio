@@ -62,6 +62,7 @@ public class TarefasController {
 		return "Requisição post";
 	}
 	
+	@CrossOrigin(origins = "*")
 	@GetMapping
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces({MediaType.APPLICATION_JSON/*, MediaType.APPLICATION_XML*/})

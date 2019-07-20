@@ -12,7 +12,7 @@
     </thead>
  
     <tbody>
-        <tr *ngFor="let pessoa of pessoas; let i = index;">
+        <tr *ngFor="let tarefa of tarefas; let i = index;">
         <td>{{ tarefa.nome }}</td>        
         <td>{{ tarefa.descricao }}</td>        
         <td *ngIf='tarefa.concluido'>Sim</td>
