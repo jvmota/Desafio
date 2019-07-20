@@ -1,5 +1,8 @@
 package com.example.desafio;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -35,5 +38,15 @@ public class mySQLDAO implements Database{
 	public void closeConnection() {
 		this.session.close();
 	}
+
+	@Override
+	public List<EntityTarefa> retornaTarefas() {
+		this.session.beginTransaction();
+		Criteria criteria = this.session.createCriteria(EntityTarefa.class);
+		this.session.getTransaction().commit();
+		List<EntityTarefa> tarefas = criteria.list();
+		return tarefas;
+	}
+	
 
 }

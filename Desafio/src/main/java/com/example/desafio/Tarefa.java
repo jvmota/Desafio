@@ -19,11 +19,11 @@ public class Tarefa {
 		this.foto = foto;
 	}*/
 	
-	public boolean getStatus() {
+	public boolean getConcluido() {
 		return this.concluido;
 	}
 	
-	public void setStatus(boolean status) {
+	public void setConcluido(boolean status) {
 		this.concluido = status;
 	}
 	

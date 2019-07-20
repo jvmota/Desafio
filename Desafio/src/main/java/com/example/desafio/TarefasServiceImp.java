@@ -1,5 +1,7 @@
 package com.example.desafio;
 
+import java.util.List;
+
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.BeanUtils;
 
@@ -47,6 +49,18 @@ public class TarefasServiceImp implements TarefasService{
 		retornaTarefa = new Tarefa();
 		BeanUtils.copyProperties(entidade, retornaTarefa);
 		return retornaTarefa;
+	}
+
+	@Override
+	public List<EntityTarefa> loadTarefas() {
+		List<EntityTarefa> tarefas = null;
+		try {
+			this.database.openConnection();
+			tarefas = database.retornaTarefas();
+		}finally {
+			this.database.closeConnection();
+		}
+		return tarefas;
 	}
 
 }
