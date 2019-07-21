@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { CadastroComponent } from './home/tarefa/cadastro.component';
 import { ConsultaComponent } from './home/tarefa/consulta.component';
+import { AtualizaComponent } from './home/tarefa/atualiza.component';
 
 import { routing } from './../app.routes';
 
@@ -21,14 +23,16 @@ import { TarefaService } from './services/tarefa.service';
 	MenuComponent,
 	HomeComponent,
 	CadastroComponent,
-	ConsultaComponent
+	ConsultaComponent,
+	AtualizaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
 	HttpModule,
 	FormsModule,
-	routing
+	routing,
+	HttpClientModule
   ],
   providers: [ConfigService, TarefaService],
   bootstrap: [AppComponent]
