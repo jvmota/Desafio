@@ -1,27 +1,38 @@
 <h3>{{titulo}}</h3>
- <div>
- <button (click)="mostrarTipo(0);">Todos</button>
- <button (click)="mostrarTipo(1);">Concluidos</button>
- <button (click)="mostrarTipo(2);">Pendentes</button>
- </div>
-<table>
-    <thead>
-    <tr>
-        <th>Nome</th>
-        <th>Concluir</th>
-        <!--<th>Excluir</th>-->
+<div class="container-fluid" id="corpo">
+	<div class="row">
+		<div class="col">
+			<button (click)="mostrarTipo(0);" class="btn btn-secondary btn-lg  btn-block">Todas</button>
+		</div>
+		<div class="col">
+			<button (click)="mostrarTipo(1);" class="btn btn-success btn-lg  btn-block">Concluidas</button>
+		</div>
+		<div class="col">
+			<button (click)="mostrarTipo(2);" class="btn btn-outline-success btn-lg  btn-block">Pendentes</button>
+		</div>
+	</div>
+	<div class="row" id="cabecalho">
+        <div class="col"><h4 id="texto">Nome</h4></div>
+        <div class="col"><h4 id="texto">Acão</h4></div>
+	</div>
+	<div *ngFor="let tarefa of tarefas; let i = index;" class="row" id="linha">
+		<div class="col">
+			<div class="row">
+				<div id="coluna" class="col" *ngIf="this.mostrar == 0 || (this.mostrar == 1) && tarefa.concluido || (this.mostrar == 2) && !tarefa.concluido">
+					<h6 id="texto">{{ tarefa.nome }}</h6>
+				</div>
+				<div id="coluna" class="col" align="center" *ngIf="this.mostrar == 0 || (this.mostrar == 1) && tarefa.concluido || (this.mostrar == 2) && !tarefa.concluido">
+					<a *ngIf="!tarefa.concluido" (click)="atualizar(tarefa.tarefaID);" class="btn btn-success">Concluir</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col" id="coluna" align="center">
+					<img style="max-width:50vw" *ngIf="tarefa.concluido" src="http://localhost:8080/Imagem/{{tarefa.tarefaID}}">
+				</div>
+			</div>
+		</div>
+	</div>
+	<tr>
+	   <td colspan="6" style="text-align: right;">Total de Registros: {{ tarefas.length }}</td> 
     </tr>
-    </thead>
- 
-    <tbody>
-	
-        <tr *ngFor="let tarefa of tarefas; let i = index;" >
-        <td *ngIf="this.mostrar == 0 || (this.mostrar == 1) && tarefa.concluido || (this.mostrar == 2) && !tarefa.concluido">{{ tarefa.nome }}</td> 
-        <td *ngIf="this.mostrar == 0 || (this.mostrar == 1) && tarefa.concluido || (this.mostrar == 2) && !tarefa.concluido"><a *ngIf="!tarefa.concluido" (click)="atualizar(tarefa.tarefaID);" style="text-align = right;">Concluir</a></td>
-		<img *ngIf="tarefa.concluido" src="http://localhost:8080/Imagem/{{tarefa.tarefaID}}">
-		</tr>
-        <tr>
-           <td colspan="6" style="text-align: right;">Total de Registros: {{ tarefas.length }}</td> 
-        </tr>
-    </tbody>
-</table>
+</div>
