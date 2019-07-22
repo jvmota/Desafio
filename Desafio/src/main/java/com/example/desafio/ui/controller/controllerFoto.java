@@ -1,4 +1,4 @@
-package com.example.desafio;
+package com.example.desafio.ui.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,12 +15,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.desafio.model.Tarefa;
+import com.example.desafio.service.TarefasService;
+import com.example.desafio.service.TarefasServiceImp;
+
 @RestController
 public class controllerFoto {
 	
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "testeFotos/{id}")
+	@RequestMapping(value = "uploadFotos/{id}")
 	@PostMapping
 	public String SalvaFoto(@PathVariable("id") Integer ID, @RequestParam MultipartFile foto) throws IOException{
 		System.out.println(ID);
@@ -31,7 +35,7 @@ public class controllerFoto {
 		foto.transferTo(fileFoto);
 		tarefa.setImgSrc(caminho);
 		tarefa.setConcluido(true);
-		EntityTarefa retorno = servico.atualizaTarefa(tarefa, ID);
+		servico.atualizaTarefa(tarefa, ID);
 		return "Ok";
 	}
 	

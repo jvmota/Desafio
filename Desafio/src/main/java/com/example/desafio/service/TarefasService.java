@@ -1,6 +1,10 @@
-package com.example.desafio;
+package com.example.desafio.service;
 
 import java.util.List;
+
+import com.example.desafio.model.EntityTarefa;
+import com.example.desafio.model.Tarefa;
+import com.example.desafio.model.TarefaDTO;
 
 public interface TarefasService {
 	

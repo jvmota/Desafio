@@ -19,7 +19,7 @@ import { Observable } from 'rxjs/Observable';
   })
 	
 export class AtualizaComponent {
-	rota: string = 'http://localhost:8080/testeFotos';
+	rota: string = 'http://localhost:8080/uploadFotos';
 	id: string;
 	constructor(private http: HttpClient, private route: ActivatedRoute){
 		this.route.params.subscribe( params => this.id = params['id']);

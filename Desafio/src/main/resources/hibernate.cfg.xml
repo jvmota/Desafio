@@ -15,7 +15,7 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         
 
-		<mapping class="com.example.desafio.EntityTarefa" />
+		<mapping class="com.example.desafio.model.EntityTarefa" />
         
         </session-factory>
 </hibernate-configuration>

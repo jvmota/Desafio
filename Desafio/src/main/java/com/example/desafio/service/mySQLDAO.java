@@ -1,4 +1,4 @@
-package com.example.desafio;
+package com.example.desafio.service;
 
 import java.util.List;
 
@@ -6,6 +6,9 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.BeanUtils;
+
+import com.example.desafio.model.EntityTarefa;
+import com.example.desafio.model.Tarefa;
 
 public class mySQLDAO implements Database{
 	

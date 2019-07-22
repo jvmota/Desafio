@@ -1,10 +1,9 @@
-package com.example.desafio;
+package com.example.desafio.model;
 
-import java.sql.Blob;
+import javax.xml.bind.annotation.XmlRootElement;
 
-//import java.io.File;
-
-public class TarefaDTO {
+@XmlRootElement
+public class Tarefa {
 	//atributos da tarefa
 	private boolean concluido = false;
 	private String nome;

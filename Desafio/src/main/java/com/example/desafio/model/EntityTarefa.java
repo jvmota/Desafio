@@ -1,8 +1,6 @@
-package com.example.desafio;
+package com.example.desafio.model;
 
-//import java.io.File;
 import java.io.Serializable;
-import java.sql.Blob;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
