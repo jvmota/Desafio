@@ -23,9 +23,12 @@
 				</div>
 				<div id="coluna" class="col" align="center" *ngIf="this.mostrar == 0 || (this.mostrar == 1) && tarefa.concluido || (this.mostrar == 2) && !tarefa.concluido">
 					<a *ngIf="!tarefa.concluido" (click)="atualizar(tarefa.tarefaID);" class="btn btn-success">Concluir</a>
+					<button (click)="tarefa.tarefaShow=true" class="btn btn-success" *ngIf="!tarefa.tarefaShow && tarefa.concluido">Mostrar</button>
+					<button (click)="tarefa.tarefaShow=false" class="btn btn-success" *ngIf="tarefa.tarefaShow && tarefa.concluido">Esconder</button>
 				</div>
 			</div>
-			<div class="row">
+			
+			<div class="row ng-show-hide" *ngIf="tarefa.tarefaShow">
 				<div class="col" id="coluna" align="center">
 					<img style="max-width:50vw" *ngIf="tarefa.concluido" src="http://localhost:8080/Imagem/{{tarefa.tarefaID}}">
 				</div>

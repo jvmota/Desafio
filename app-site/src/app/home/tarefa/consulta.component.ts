@@ -21,6 +21,7 @@ import {Resposta} from '../../services/resposta';
     private titulo:string;
 	private src: string;
 	private codigo: number;
+	private mostrarimg: boolean;
  
     constructor(private tarefaService: TarefaService,
                 private router: Router){}
@@ -34,6 +35,11 @@ import {Resposta} from '../../services/resposta';
       this.tarefaService.getTarefas().subscribe(res => this.tarefas = res);
 	  
 	  this.mostrar = 0;
+	  for(let tarefa of this.tarefas){
+		  tarefa.tarefaShow = false;
+	  }
+	  this.mostrarimg = true;
+	  console.log(this.mostrarimg);
     }
 	
 	mostrarTipo(tipo: number): void{
@@ -89,5 +95,9 @@ import {Resposta} from '../../services/resposta';
 	buscarSRC(cod: number): string{
 		this.tarefaService.getFotoSrc(cod).subscribe(res => this.src = res);
 		return this.src;
+	}
+	
+	mostrarEsconder(tarefa: Tarefa): void{
+		tarefa.tarefaShow = !tarefa.tarefaShow;
 	}
   }
