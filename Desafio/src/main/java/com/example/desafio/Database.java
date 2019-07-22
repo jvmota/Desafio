@@ -9,5 +9,6 @@ public interface Database {
 	public EntityTarefa loadTarefa(Integer ID);
 	public void closeConnection();
 	public List<EntityTarefa> retornaTarefas();
+	public EntityTarefa atualizaTarefa(Tarefa tarefa, Integer ID);
 
 }

@@ -4,17 +4,8 @@
     <br/>
     <h3>{{titulo}} Ola</h3>
  
-    <label>Descrição:
-        <input type="input" name="codigo" size="10" [(ngModel)]="tarefa.descricao"/>
-    </label><br/><br/>
- 
     <label>Nome:
         <input type="input" name="nome" size="30" [(ngModel)]="tarefa.nome"/>
-    </label><br/><br/>
- 
-    <label>Concluido:
-        <input type="radio" name="ativo" [(ngModel)]="tarefa.concluido" [value]="true">Sim
-        <input type="radio" name="ativo" [(ngModel)]="tarefa.concluido" [value]="false">Não<br>
     </label><br/><br/>
  
     <button type="submit">Salvar</button>

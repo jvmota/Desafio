@@ -34,7 +34,6 @@ import { Observable } from 'rxjs/Observable';
  
     /*FUNÇÃO PARA SALVAR UM NOVO REGISTRO OU ALTERAÇÃO EM UM REGISTRO EXISTENTE */
     salvar():void {
-		console.log("Teste de envio");
         this.tarefaService.addTarefa(this.tarefa).subscribe(resposta => {
  
            //PEGA O RESPONSE DO RETORNO DO SERVIÇO

@@ -17,7 +17,10 @@ import {Resposta} from '../../services/resposta';
   export class ConsultaComponent implements OnInit {
  
     private tarefas: Tarefa[] = new Array();
+	private mostrar: number;
     private titulo:string;
+	private src: string;
+	private codigo: number;
  
     constructor(private tarefaService: TarefaService,
                 private router: Router){}
@@ -29,7 +32,14 @@ import {Resposta} from '../../services/resposta';
  
       /*CHAMA O SERVIÇO E RETORNA TODAS AS PESSOAS CADASTRADAS */
       this.tarefaService.getTarefas().subscribe(res => this.tarefas = res);
+	  
+	  this.mostrar = 0;
     }
+	
+	mostrarTipo(tipo: number): void{
+		this.mostrar = tipo;
+		console.log(this.mostrar);
+	}
  
     /**EXCLUI UM REGISTRO QUANDO CLICAMOS NA OPÇÃO EXCLUIR DE UMA 
      * LINHA DA TABELA
@@ -68,5 +78,16 @@ import {Resposta} from '../../services/resposta';
       this.router.navigate(['/cadastro-pessoa',codigo]);
  
     }*/
- 
+	atualizar(codigo: number): void {
+		this.router.navigate(['/atualiza-tarefa', codigo]);
+	}
+	
+	assimilaCodigo (cod: number): void{
+		this.codigo = cod;
+	}
+	
+	buscarSRC(cod: number): string{
+		this.tarefaService.getFotoSrc(cod).subscribe(res => this.src = res);
+		return this.src;
+	}
   }

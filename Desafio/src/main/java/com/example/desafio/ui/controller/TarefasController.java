@@ -7,17 +7,14 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.BeanUtils;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.desafio.*;
@@ -53,6 +50,7 @@ public class TarefasController {
 			System.out.println("Oláaaaaaa");
 		};
 		TarefasService servico = new TarefasServiceImp();
+		tarefadto.setConcluido(false);
 		Tarefa tarefaArmazenada = servico.saveTarefa(tarefadto);
 		System.out.println(tarefa.getConcluido());
 		if(tarefaArmazenada != null && !tarefaArmazenada.getNome().isEmpty()) {

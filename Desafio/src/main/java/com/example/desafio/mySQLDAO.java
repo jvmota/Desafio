@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.BeanUtils;
 
 public class mySQLDAO implements Database{
 	
@@ -46,6 +47,17 @@ public class mySQLDAO implements Database{
 		this.session.getTransaction().commit();
 		List<EntityTarefa> tarefas = criteria.list();
 		return tarefas;
+	}
+
+	@Override
+	public EntityTarefa atualizaTarefa(Tarefa tarefa, Integer ID) {
+		EntityTarefa tarefaModificada = new EntityTarefa();
+		this.session.beginTransaction();
+		this.session.load(tarefaModificada, ID);
+		BeanUtils.copyProperties(tarefa, tarefaModificada);
+		this.session.update(tarefaModificada);
+		this.session.getTransaction().commit();
+		return tarefaModificada;
 	}
 	
 

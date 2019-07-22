@@ -2,12 +2,12 @@ package com.example.desafio;
 
 //import java.io.File;
 import java.io.Serializable;
+import java.sql.Blob;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity(name="tarefa")
 public class EntityTarefa implements Serializable{
@@ -15,27 +15,12 @@ public class EntityTarefa implements Serializable{
 	
 	//atributos da tarefa
 	@Id
-	@GeneratedValue/*(
-	    strategy= GenerationType.AUTO,
-	    generator="native"
-	)
-	@GenericGenerator(
-	    name = "native",
-	    strategy = "native"
-	)*/
+	@GeneratedValue
 	private Integer tarefaID;
 	private boolean concluido;
 	private String nome;
-	private String descricao;
-	/*private File foto;
+	private String imgSrc;
 	
-	public File getFoto() {
-		return foto;
-	}
-
-	public void setFoto(File foto) {
-		this.foto = foto;
-	}*/
 	public Integer getTarefaID() {
 		return tarefaID;
 	}
@@ -54,13 +39,12 @@ public class EntityTarefa implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+
+	public String getImgSrc() {
+		return imgSrc;
 	}
 
-
-
+	public void setImgSrc(String imgSrc) {
+		this.imgSrc = imgSrc;
+	}
 }

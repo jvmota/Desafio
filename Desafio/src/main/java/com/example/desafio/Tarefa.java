@@ -1,5 +1,7 @@
 package com.example.desafio;
 
+import java.sql.Blob;
+
 //import java.io.File;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -8,16 +10,7 @@ public class Tarefa {
 	//atributos da tarefa
 	private boolean concluido = false;
 	private String nome;
-	private String descricao;
-	//private File foto;
-	
-	/*public File getFoto() {
-		return foto;
-	}
-
-	public void setFoto(File foto) {
-		this.foto = foto;
-	}*/
+	private String imgSrc;
 	
 	public boolean getConcluido() {
 		return this.concluido;
@@ -34,12 +27,12 @@ public class Tarefa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	public String getDescricao() {
-		return this.descricao;
+
+	public String getImgSrc() {
+		return imgSrc;
 	}
-	
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+
+	public void setImgSrc(String imgSrc) {
+		this.imgSrc = imgSrc;
 	}
 }

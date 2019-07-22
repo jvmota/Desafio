@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     { path: '',                        component: HomeComponent },
     { path: 'consulta-tarefa',         component: ConsultaComponent },
     { path: 'cadastro-tarefa',         component: CadastroComponent },
-    { path: 'atualiza-tarefa',		   component: AtualizaComponent }
+    { path: 'atualiza-tarefa/:id',		   component: AtualizaComponent }
  
 ];
  

@@ -63,4 +63,16 @@ public class TarefasServiceImp implements TarefasService{
 		return tarefas;
 	}
 
+	@Override
+	public EntityTarefa atualizaTarefa(Tarefa tarefa, Integer ID) {
+		EntityTarefa retornaTarefa = null;
+		try {
+			this.database.openConnection();
+			retornaTarefa = this.database.atualizaTarefa(tarefa, ID);
+		}finally {
+			this.database.closeConnection();
+		}
+		return retornaTarefa;
+	}
+
 }

@@ -35,4 +35,8 @@ export class TarefaService {
 	getTarefas(){        
         return this.http.get(this.baseUrlService).map(res => res.json());
     }
+	
+	getFotoSrc(codigo: number){
+		return this.http.get("http://localhost:8080/testeFotos/" + codigo).map(res => res.json());
+	}
 }

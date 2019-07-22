@@ -19,8 +19,12 @@ import { Observable } from 'rxjs/Observable';
   })
 	
 export class AtualizaComponent {
-	constructor(private http: HttpClient){
-		
+	rota: string = 'http://localhost:8080/testeFotos';
+	id: string;
+	constructor(private http: HttpClient, private route: ActivatedRoute){
+		this.route.params.subscribe( params => this.id = params['id']);
+		this.rota = this.rota + '/' + this.id;
+		console.log(this.rota);
 	}
 				
 	InputFileChange(event){
@@ -28,7 +32,7 @@ export class AtualizaComponent {
 			const foto = event.target.files[0];
 			const formData = new FormData();
 			formData.append('foto', foto);
-			this.http.post('http://localhost:8080/testeFotos', formData).subscribe(resposta => console.log('Upload ok'));
+			this.http.post(this.rota, formData).subscribe(resposta => console.log('Upload ok'));
 		}
 		
 	}
