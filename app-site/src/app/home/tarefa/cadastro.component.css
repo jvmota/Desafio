@@ -1,17 +1,15 @@
 form{
-    position:fixed;
- 
     left:30%;
     width:450px;
-    height: 460px;
+    height: 260px;
     background-color: rgba(230, 230, 230, 0.71);
-    border: 1px solid  rgba(106, 141, 173, 0.71);;
+    border: 1px solid  rgba(106, 141, 173, 0.71);
     border-radius: 25px;
  }
  
  h3{
  
-    background-color: #213E8D;
+    background-color: #0b693c;
     color: white;
     text-align: center;
     vertical-align: middle;    
@@ -20,10 +18,7 @@ form{
  }
  
  button{
-    position: absolute; 
-    right: 0;
     margin-right: 8px;
-    bottom:0; 
     margin-bottom: 12px;
  }
  

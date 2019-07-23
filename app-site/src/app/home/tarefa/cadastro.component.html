@@ -1,8 +1,9 @@
 <h3>{{mensagem}}</h3>
-<form (ngSubmit)="salvar()">   
+<div align="center">
+<form (ngSubmit)="salvar()" align="center">   
  
     <br/>
-    <h3>{{titulo}} Ola</h3>
+    <h3>{{titulo}}</h3>
  
     <label>Nome:
         <input type="input" name="nome" size="30" [(ngModel)]="tarefa.nome"/>
@@ -10,3 +11,4 @@
  
     <button type="submit">Salvar</button>
 </form>
+</div>

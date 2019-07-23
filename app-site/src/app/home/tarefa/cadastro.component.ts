@@ -20,6 +20,7 @@ import { Observable } from 'rxjs/Observable';
   export class CadastroComponent implements OnInit {
  
     private mensagem:string = "Nova Tarefa";
+	private titulo: string = "Digite o nome da tarefa"
     private tarefa:Tarefa = new Tarefa();
  
     constructor(private tarefaService: TarefaService,
@@ -29,7 +30,6 @@ import { Observable } from 'rxjs/Observable';
     /*CARREGADO NA INICIALIZAÇÃO DO COMPONENTE */
     ngOnInit() {
           this.mensagem = "Nova tarefa";
-		  console.log("Teste");
     }
  
     /*FUNÇÃO PARA SALVAR UM NOVO REGISTRO OU ALTERAÇÃO EM UM REGISTRO EXISTENTE */
@@ -38,12 +38,9 @@ import { Observable } from 'rxjs/Observable';
  
            //PEGA O RESPONSE DO RETORNO DO SERVIÇO
            let res:Resposta = <Resposta>resposta;
-		   alert(res.mensagem);
-		},(erro) => {   
-           /**AQUI VAMOS MOSTRAR OS ERROS NÃO TRATADOS
-             EXEMPLO: SE APLICAÇÃO NÃO CONSEGUIR FAZER UMA REQUEST NA API                        */                 
-            alert(erro);
-         });
+		},(erro) => {
+			this.router.navigate(['/consulta-tarefa'])
+        });
     }
  
   }
