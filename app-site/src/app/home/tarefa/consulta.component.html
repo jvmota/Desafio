@@ -28,9 +28,9 @@
 				</div>
 			</div>
 			
-			<div class="row ng-show-hide" *ngIf="tarefa.tarefaShow">
+			<div class="row transicao" [style.height]="!tarefa.tarefaShow ? '0' : '30vh'" [style.opacity]="!tarefa.tarefaShow ? '0' : '1'">
 				<div class="col" id="coluna" align="center">
-					<img style="max-width:50vw" *ngIf="tarefa.concluido" src="http://localhost:8080/Imagem/{{tarefa.tarefaID}}">
+					<img style="max-height:30vh" class="transicao" [style.height]="!tarefa.tarefaShow ? '0' : '100%'" *ngIf="tarefa.concluido" src="http://localhost:8080/Imagem/{{tarefa.tarefaID}}">
 				</div>
 			</div>
 		</div>
