@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DesafioApp</string>
+    <string name="IPServer">Digite o IP</string>
+    <string name="ButtonSendIP">Entrar</string>
+</resources>
