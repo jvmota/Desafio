@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.app.MESSAGE";
     public String host;
     public boolean ConSuccess = false;
+    public Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
     //metodo chamado quando se clicar no botao enviar
     public void sendMessage(View view){
-        Intent intent = new Intent(this, Menu.class);
+        intent = new Intent(this, Menu.class);
         EditText editText = (EditText) findViewById(R.id.editText);
         host = editText.getText().toString();
         host = "http://" + host + ":8080/";
+        intent.putExtra(EXTRA_MESSAGE, host);
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         HttpURLConnection myConnection = (HttpURLConnection) EndPointServer.openConnection();
                         if(myConnection.getResponseCode() == 200){
-                            ConSuccess = true;
+                            startActivity(intent);
                         }
                     } catch (IOException e){
                         e.printStackTrace();
@@ -51,9 +53,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        intent.putExtra(EXTRA_MESSAGE, host);
-        if(ConSuccess) {
-            startActivity(intent);
-        }
     }
 }
