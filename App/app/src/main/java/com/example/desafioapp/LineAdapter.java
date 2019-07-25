@@ -1,6 +1,9 @@
 package com.example.desafioapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,9 +14,16 @@ import java.util.Locale;
 
 public class LineAdapter extends RecyclerView.Adapter<LineHolder> {
     private final List<Tarefa> tarefas;
+    private String host;
+    private Intent intent;
+    private Context contexto;
+    public static final String EXTRA_HOST = "com.example.app.HOST";
+    public static final String EXTRA_MENU = "com.example.app.MENU";
 
-    public LineAdapter(ArrayList listatarefas){
+    public LineAdapter(ArrayList listatarefas, String localhost, Context cont){
+        contexto = cont;
         tarefas = listatarefas;
+        host = localhost;
     }
 
     @Override
@@ -22,13 +32,22 @@ public class LineAdapter extends RecyclerView.Adapter<LineHolder> {
     }
 
     @Override
-    public void onBindViewHolder(LineHolder holder, int position){
+    public void onBindViewHolder(LineHolder holder, final int position){
         holder.titulo.setText(String.format(Locale.getDefault(), "%d: %s",
                 tarefas.get(position).getTarefaID(),
                 tarefas.get(position).getNome()
         ));
 
-        //colocar a acao de adicionar foto depois
+        holder.adicionaFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(contexto, FotoActivity.class);
+                String hostFoto = host + "Imagem/" + tarefas.get(position).getTarefaID();
+                intent.putExtra(EXTRA_HOST, hostFoto);
+                intent.putExtra(EXTRA_MENU, host);
+                contexto.startActivity(intent);
+            }
+        });
     }
 
     @Override

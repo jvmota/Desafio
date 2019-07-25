@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class Menu extends AppCompatActivity {
     public String host;
+    public String message;
     public ArrayList<Tarefa> tarefas;
     RecyclerView ListaTarefasView;
     private LineAdapter adapterLista;
@@ -31,7 +32,7 @@ public class Menu extends AppCompatActivity {
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
         //define o host para pegar tarefas no servidor back end
         host = message + "tarefas";
@@ -64,7 +65,7 @@ public class Menu extends AppCompatActivity {
         ListaTarefasView = findViewById(R.id.recycler_view_tarefas);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         ListaTarefasView.setLayoutManager(layoutManager);
-        adapterLista = new LineAdapter(tarefas);
+        adapterLista = new LineAdapter(tarefas, message, this);
         ListaTarefasView.setAdapter(adapterLista);
         ListaTarefasView.addItemDecoration(
                 new DividerItemDecoration(this, DividerItemDecoration.VERTICAL)

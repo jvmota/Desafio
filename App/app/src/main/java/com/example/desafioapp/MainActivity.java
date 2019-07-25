@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.app.MESSAGE";
     public String host;
-    public boolean ConSuccess = false;
     public Intent intent;
 
     @Override
