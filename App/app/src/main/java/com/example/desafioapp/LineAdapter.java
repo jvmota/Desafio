@@ -38,16 +38,21 @@ public class LineAdapter extends RecyclerView.Adapter<LineHolder> {
                 tarefas.get(position).getNome()
         ));
 
-        holder.adicionaFoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent = new Intent(contexto, FotoActivity.class);
-                String hostFoto = host + "Imagem/" + tarefas.get(position).getTarefaID();
-                intent.putExtra(EXTRA_HOST, hostFoto);
-                intent.putExtra(EXTRA_MENU, host);
-                contexto.startActivity(intent);
-            }
-        });
+        if(tarefas.get(position).getConcluido()){
+            holder.adicionaFoto.setVisibility(View.GONE);
+        }
+        else{
+            holder.adicionaFoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    intent = new Intent(contexto, FotoActivity.class);
+                    String hostFoto = host + "uploadFotos/" + tarefas.get(position).getTarefaID();
+                    intent.putExtra(EXTRA_HOST, hostFoto);
+                    intent.putExtra(EXTRA_MENU, host);
+                    contexto.startActivity(intent);
+                }
+            });
+        }
     }
 
     @Override

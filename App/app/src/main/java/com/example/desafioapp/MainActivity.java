@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         host = "http://" + host + ":8080/";
         intent.putExtra(EXTRA_MESSAGE, host);
         AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
+                @Override
+                public void run() {
                 URL EndPointServer = null;
                 try {
                     String hostEnter = host + "AppEnter/";
