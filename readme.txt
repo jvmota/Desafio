@@ -1,4 +1,6 @@
-A pasta Desafio contém o projeto do back end,
-A pasta app-site contém o projeto do front end
-E a pasta App contém o aplicativo Android.
+A pasta Desafio contÃ©m o projeto do back end,
+A pasta app-site contÃ©m o projeto do front end
+E a pasta App contÃ©m o aplicativo Android.
+
+O ultimo build realizado do aplicativo estÃ¡ na pasta App\app\build\outputs\apk\debug
 
