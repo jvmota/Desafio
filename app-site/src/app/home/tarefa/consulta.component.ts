@@ -31,7 +31,7 @@ import {Resposta} from '../../services/resposta';
       /*SETA O TÍTULO */
       this.titulo = "Tarefas Cadastradas";
  
-      /*CHAMA O SERVIÇO E RETORNA TODAS AS PESSOAS CADASTRADAS */
+      /*CHAMA O SERVIÇO E RETORNA TODAS AS TAREFAS CADASTRADAS */
       this.tarefaService.getTarefas().subscribe(res => this.tarefas = res);
 	  
 	  this.mostrar = 0;
@@ -44,9 +44,6 @@ import {Resposta} from '../../services/resposta';
 	mostrarTipo(tipo: number): void{
 		this.mostrar = tipo;
 		console.log(this.mostrar);
-	}
-	atualizar(codigo: number): void {
-		this.router.navigate(['/atualiza-tarefa', codigo]);
 	}
 	
 	assimilaCodigo (cod: number): void{

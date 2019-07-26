@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,6 +23,7 @@ public class Menu extends AppCompatActivity {
     public ArrayList<Tarefa> tarefas;       //lista com as tarefas que serao carregadas
     RecyclerView ListaTarefasView;          //recycler view que vai mostrar a lista de tarefas
     private LineAdapter adapterLista;       //Adapter que ira transformar os objetos da lista para o recycler view
+    public boolean atualizado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,4 +77,29 @@ public class Menu extends AppCompatActivity {
         );
     }
 
+    public void Atualizar(View view){
+        atualizado = false;
+        final ObjectMapper mapper = new ObjectMapper();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    tarefas = mapper.readValue(new URL(host), new TypeReference<ArrayList<Tarefa>>(){});                                 // read from url
+                    atualizado = true;
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+        while(!atualizado){
+            try{
+                Thread.sleep(100);
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }
+        }
+        setupRecycler();
+    }
 }

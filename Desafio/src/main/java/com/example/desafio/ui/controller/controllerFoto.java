@@ -27,7 +27,6 @@ public class controllerFoto {
 	@RequestMapping(value = "uploadFotos/{id}")
 	@PostMapping
 	public String SalvaFoto(@PathVariable("id") Integer ID, @RequestParam MultipartFile foto) throws IOException{
-		System.out.println(ID);
 		TarefasService servico = new TarefasServiceImp();
 		Tarefa tarefa = servico.loadTarefa(ID);
 		String caminho = System.getProperty("user.dir") + "\\uploads\\tarefa" + ID + ".png";

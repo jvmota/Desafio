@@ -11,9 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="36dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="8dp"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAtualizar"
         app:layout_constraintTop_toBottomOf="@+id/TituloTarefas"
         tools:layout_editor_absoluteX="0dp"
         tools:listitem="@android:layout/activity_list_item" />
@@ -39,5 +39,15 @@
         android:text="Concluido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonAtualizar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:onClick="Atualizar"
+        android:text="Atualizar"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
