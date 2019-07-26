@@ -39,9 +39,10 @@ public class LineAdapter extends RecyclerView.Adapter<LineHolder> {
         ));
 
         if(tarefas.get(position).getConcluido()){
-            holder.adicionaFoto.setVisibility(View.GONE);
+            holder.adicionaFoto.setVisibility(View.INVISIBLE);
         }
         else{
+            holder.adicionaFoto.setVisibility(View.VISIBLE);
             holder.adicionaFoto.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

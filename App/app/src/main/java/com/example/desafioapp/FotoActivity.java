@@ -38,6 +38,9 @@ public class FotoActivity extends AppCompatActivity {
         Button btnCamera = findViewById(R.id.buttonCamera);
         FotoCamera = findViewById(R.id.imageViewCamera);
 
+        Button envia = findViewById(R.id.buttonEnviar);
+        envia.setVisibility(View.INVISIBLE);
+
         btnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,12 +55,11 @@ public class FotoActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, Data);
         foto = (Bitmap)Data.getExtras().get("data");
         FotoCamera.setImageBitmap(foto);
+        Button envia = findViewById(R.id.buttonEnviar);
+        envia.setVisibility(View.VISIBLE);
     }
 
     public void MandarFoto(View view){
-        TextView teste = findViewById(R.id.teste);
-        teste.setText(host);
-
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
