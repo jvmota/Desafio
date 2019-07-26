@@ -15,17 +15,19 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String EXTRA_MESSAGE = "com.example.app.MESSAGE";
-    public String host;
-    public Intent intent;
+    public static final String EXTRA_MESSAGE = "com.example.app.MESSAGE";   //String que sera passada a proxima view
+    public String host;                                                     //String que armazenara o ip do host
+    public Intent intent;                                                   //Intent para abrir a proxima view
 
+    //metodo padrao de criacao da activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
-    //metodo chamado quando se clicar no botao enviar
+    //metodo chamado quando se clicar no botao enviar: Pega a string do edittext, cria a intent,
+    //cria a comunicacao com o host e se positivo, abre a nova activity (Menu)
     public void sendMessage(View view){
         intent = new Intent(this, Menu.class);
         EditText editText = (EditText) findViewById(R.id.editText);

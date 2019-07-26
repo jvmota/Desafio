@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,25 +17,25 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class Menu extends AppCompatActivity {
-    public String host;
-    public String message;
-    public ArrayList<Tarefa> tarefas;
-    RecyclerView ListaTarefasView;
-    private LineAdapter adapterLista;
+    public String host;                     //host com o URL base das tarefas
+    public String message;                  //host com o URL para enviar foto
+    public ArrayList<Tarefa> tarefas;       //lista com as tarefas que serao carregadas
+    RecyclerView ListaTarefasView;          //recycler view que vai mostrar a lista de tarefas
+    private LineAdapter adapterLista;       //Adapter que ira transformar os objetos da lista para o recycler view
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        // Get the Intent that started this activity and extract the string
+        // Pega o Intent que iniciou a activity e pega a string passada
         Intent intent = getIntent();
         message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
         //define o host para pegar tarefas no servidor back end
         host = message + "tarefas";
 
-        //pega uma lista de objetos
+        //pega uma lista do servidor e o mapeia na ArrayList com o Jackson
         final ObjectMapper mapper = new ObjectMapper();
         new Thread(new Runnable() {
             @Override
@@ -51,6 +49,8 @@ public class Menu extends AppCompatActivity {
                 }
             }
         }).start();
+
+        //para a thread ate que a lista seja retornada (carece de tratamento de erro)
         while(tarefas == null){
             try{
                 Thread.sleep(100);
@@ -58,9 +58,12 @@ public class Menu extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+
+        //mapeia a lista no recycler view
         setupRecycler();
     }
 
+    //metodo para mapear o recycler view
     private void setupRecycler(){
         ListaTarefasView = findViewById(R.id.recycler_view_tarefas);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
